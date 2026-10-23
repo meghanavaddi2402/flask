@@ -1,0 +1,114 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Records</title>
+    
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #fff1f2;
+        margin: 0;
+        padding: 40px 20px;
+    }
+
+    h1 {
+        color: #9d174d;
+        text-align: center;
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+
+    table {
+        width: 85%;
+        margin: 0 auto;
+        border-collapse: collapse;
+        background-color: white;
+        box-shadow: 0 4px 15px rgba(190, 24, 93, 0.12);
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    th, td {
+        padding: 14px 18px;
+        text-align: center;
+        border: 1px solid #fbcfe8;
+    }
+
+    th {
+        background-color: #be185d;
+        color: white;
+        font-size: 15px;
+    }
+
+    td {
+        color: #4a2033;
+        font-size: 14px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #fff1f7;
+    }
+
+    tr:hover {
+        background-color: #fce7f3;
+    }
+
+    @media (max-width: 600px) {
+        table {
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px 6px;
+            font-size: 12px;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+    <h1>Student Records</h1>
+
+    <table>
+        <tr>
+            <th>Student ID</th>
+            <th>Name</th>
+            <th>Percentage</th>
+            <th>Grade</th>
+        </tr>
+
+        {% for student in students %}
+        <tr>
+            <td>{{ student.id }}</td>
+            <td>{{ student.name }}</td>
+            <td>{{ student.percentage }}%</td>
+
+            <td>
+                {% if student.percentage > 80 %}
+                    A
+                {% elif student.percentage > 70 %}
+                    B
+                {% elif student.percentage > 60 %}
+                    C
+                {% elif student.percentage > 50 %}
+                    D
+                {% else %}
+                    F
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+</html>
+
